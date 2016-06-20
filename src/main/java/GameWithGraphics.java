@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.io.IOException;
+import java.sql.SQLException;
 
 public class GameWithGraphics {
 
@@ -6,7 +8,13 @@ public class GameWithGraphics {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new Graphics();
+                try {
+                    new Graphics();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
 
 
             }

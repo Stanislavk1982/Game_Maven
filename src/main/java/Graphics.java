@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +13,7 @@ public class Graphics extends JFrame {
     //private JButton button;
 
 
-    public Graphics() {
+    public Graphics() throws IOException, SQLException {
         super("Sea battle");
 
         Toolkit toolkit = Toolkit.getDefaultToolkit();

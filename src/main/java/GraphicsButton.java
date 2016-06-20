@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.List;
 
 
@@ -48,19 +49,23 @@ public class GraphicsButton extends JPanel {
                         btn.setText(String.valueOf(type));
                     }
 
-                    if (board2.gameFinished()) {
-                        if (board2.isDrow()) {
-                            System.out.println("Drow");
-                            textArea.setText("DROW");
-                            board2.clear();
-                        } else {
-                            System.out.println("Winner" + board2.getWinner());
-                            System.out.println("Winner" + board2.getLooser());
-                            textArea.setText("Winner is: " + board2.getWinner().toString() + "\n Looser: " + board2.getLooser().toString());
-                            textArea.append("------------------------");
-                            board2.clear();
-                            JOptionPane.showMessageDialog(null, "New Game");
+                    try {
+                        if (board2.gameFinished()) {
+                            if (board2.isDrow()) {
+                                System.out.println("Drow");
+                                textArea.setText("DROW");
+                                board2.clear();
+                            } else {
+                                System.out.println("Winner" + board2.getWinner());
+                                System.out.println("Winner" + board2.getLooser());
+                                textArea.setText("Winner is: " + board2.getWinner().toString() + "\n Looser: " + board2.getLooser().toString());
+                                textArea.append("------------------------");
+                                board2.clear();
+                                JOptionPane.showMessageDialog(null, "New Game");
+                            }
                         }
+                    } catch (SQLException e1) {
+                        e1.printStackTrace();
                     }
                 }
             });

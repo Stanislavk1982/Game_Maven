@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,7 +13,7 @@ public class Board {
     private int x, y;
     private List<JButton> buttons;
 
-    public Board() {
+    public Board() throws IOException, SQLException {
         for (int i = 0; i < 3; i++) {
             Arrays.fill(board[i], ' ');
         }
@@ -137,7 +139,7 @@ public class Board {
         System.out.print("Enter you moves");
     }
 
-    public void winAndAddStatistic(Statistic statistic) {
+    public void winAndAddStatistic(Statistic statistic) throws SQLException {
         System.out.println("The winner is: " + gameWinner());
         GameResult resultWinner = new GameResult(gameWinner(), "winner");
         GameResult resultLooser = new GameResult(gameLooser(), "looser");

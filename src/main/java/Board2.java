@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -72,7 +73,7 @@ public class Board2 {
         return drow;
     }
 
-    public boolean gameFinished() {
+    public boolean gameFinished() throws SQLException {
         int counter = 0;
         drow=false;
         for (int i = 0; i < 9; i++) {
@@ -119,7 +120,7 @@ public class Board2 {
         return looser;
     }
 
-    public void calaculateWin(char type) {
+    public void calaculateWin(char type) throws SQLException {
         if (type == 'X') {
             winner = playerX;
             looser = player0;
@@ -132,14 +133,14 @@ public class Board2 {
 
     }
 
-    public void winAndAddStatistic(Statistic statistic) {
+    public void winAndAddStatistic(Statistic statistic) throws SQLException {
         GameResult resultWinner = new GameResult(winner, "winner");
         GameResult resultLooser = new GameResult(looser, "looser");
         statistic.addResult(resultWinner);
         statistic.addResult(resultLooser);
     }
 
-    public void deowAddStatistic(Statistic statistic) {
+    public void deowAddStatistic(Statistic statistic) throws SQLException {
         GameResult resultWinner = new GameResult(playerX, "Drow");
         GameResult resultLooser = new GameResult(player0, "Drow");
         statistic.addResult(resultWinner);

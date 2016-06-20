@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.List;
 
 public class GraphicButtonStatistic extends JPanel {
@@ -62,7 +63,12 @@ public class GraphicButtonStatistic extends JPanel {
         buttonAllGamers.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                textArea.setText(statistic.getAllGamers());
+                try {
+                    textArea.setText(statistic.getStatisticFromJDBC());
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+                ;
             }
         });
     }

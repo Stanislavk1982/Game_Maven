@@ -12,6 +12,18 @@ public class GameResult implements Comparable{
 
     }
 
+    public Player getPlayer() {
+        return player;
+    }
+
+    public String getResult() {
+        return result;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
     public String returnResult() {
         return result;
     }
